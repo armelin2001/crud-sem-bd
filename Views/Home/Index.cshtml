@@ -1,0 +1,42 @@
+﻿@model IEnumerable<crud_sem_bd.Models.Funcionario>
+@{
+    ViewData["Title"] = "ListarFuncionarios";
+}
+
+
+
+<table class="table">
+    <h5 class="card-title">Lista de Funcionarios</h5>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salario)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salario)
+                </td>
+                <td>
+                    <div class="form-group">
+                        <a asp-action="Alterar" asp-controller="Funcionario" asp-route-id="@item.Id" class="btn btn-primary">Alterar</a>
+                        <a asp-action="Detalhes" asp-controller="Funcionario" asp-route-id="@item.Id" class="btn btn-info">Detalhes</a>
+                        <a asp-action="Deletar" asp-controller="Funcionario" asp-route-id="@item.Id" class="btn btn-danger">Deletar</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
